@@ -3,7 +3,7 @@
 ## Aspects of the work that have been correctly implemented and what have not
 
 - I have correctly cloned the repo the professor provided.
-- I wrote this readme files with the required sections.
+- I wrote this readme file with the required sections.
 - I used the CSS sprite technique to display different parts of the same image responding to the change in the window width.
 - I did not modify the provided HTML.
 
