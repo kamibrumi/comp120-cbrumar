@@ -43,9 +43,11 @@
                 lng: -71.0704
             }
         }];
+
+        var image = 'car.png';
         for (var i = 0; i < cars.length; i++) {
             console.log(cars[i].coords);
-            var marker = new google.maps.Marker({position: cars[i].coords, map: map});
+            var marker = new google.maps.Marker({position: cars[i].coords, map: map, icon:image});
         }
 
 
