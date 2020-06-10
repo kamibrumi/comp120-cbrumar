@@ -1,0 +1,7 @@
+.block {
+    display: flex;
+}
+p.username {
+    margin-left: 10px;
+    font-size: 75%;
+}

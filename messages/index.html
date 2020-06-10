@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Messages</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script>
+        function loadMessages() {
+            var messages = document.getElementById("messages");
+
+            jsonData = '[{"id":1,"content":"Do you really want to hurt me?","username":"Boy"},{"id":2,"content":"Do you really want to make me cry?","username":"George"}]';
+            var jsonArr = JSON.parse(jsonData);
+            for (var i = 0; i < jsonArr.length; i++) {
+                // I create a div, with two paragraph each, the first paragraph is for the content, and the second for the username.
+                // In this way, with CSS I can style the username to appear smaller next to the content as shown in the
+                // example output.
+                var div = document.createElement('div');
+                div.id = 'block' + jsonArr[i].id;
+                div.className = 'block';
+                messages.appendChild(div);
+
+                // paragraph 1
+                var p1 = document.createElement("p");
+                p1.className = 'content';
+                var line1 = document.createTextNode(jsonArr[i].content);
+                p1.appendChild(line1);
+                div.appendChild(p1);
+
+                // paragraph 2
+                var p2 = document.createElement("p");
+                p2.className = 'username';
+                var line2 = document.createTextNode(jsonArr[i].username);
+                p2.appendChild(line2);
+                div.appendChild(p2);
+            }
+
+
+        }
+    </script>
+</head>
+
+<body onload="loadMessages()">
+<h1>Messages</h1>
+<div id="messages"></div>
+</body>
+
+</html>
