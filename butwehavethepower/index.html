@@ -18,17 +18,64 @@
     var lyr = document.getElementById("lyrics");
 
     var para = document.createElement("p");
-    var node = document.createTextNode("1");
+    var node = document.createTextNode("");
     para.appendChild(node);
 
     lyr.appendChild(para);
 
     v.addEventListener("timeupdate", function () {
-        console.log(v.currentTime);
         if (v.currentTime < 6.) {
-            para.innerHTML = "2";
-        } else if (v.currentTime < 10) {
-            para.innerHTML = "3";
+            para.innerHTML = "";
+        } else if (v.currentTime < 9.) {
+            para.innerHTML = "Come gather round, children,";
+        } else if (v.currentTime < 10.79) {
+            para.innerHTML = "It's high time ye learned";
+        } else if (v.currentTime < 12.95) {
+            para.innerHTML = "\'Bout a hero named Homer";
+        } else if (v.currentTime < 17.) {
+            para.innerHTML = "And a devil named Burns.";
+        } else if (v.currentTime < 18.8) {
+            para.innerHTML = "We'll march 'till we drop";
+        } else if (v.currentTime < 21.43) {
+            para.innerHTML = "The girls and the fellas.";
+        } else if (v.currentTime < 23.4) {
+            para.innerHTML = "We'll fight 'till the death";
+        } else if (v.currentTime < 27.3) {
+            para.innerHTML = "Or else fold like umbrellas.";
+        } else if (v.currentTime < 38.1) {
+            para.innerHTML = "";
+        } else if (v.currentTime < 40.50) {
+            para.innerHTML = "So we'll march day and night";
+        } else if (v.currentTime < 43.) {
+            para.innerHTML = "By the big cooling tower.";
+        } else if (v.currentTime < 45.1) {
+            para.innerHTML = "They have the plant";
+        } else if (v.currentTime < 50.) {
+            para.innerHTML = "But we have the power.";
+        } else if (v.currentTime < 53.) {
+            para.innerHTML = "";
+        } else if (v.currentTime < 56.) {
+            para.innerHTML = "(Lenny:) Now do \"Classical Gas!\"";
+        } else if (v.currentTime < 72.) {
+            para.innerHTML = "";
+        } else if (v.currentTime < 74.9) {
+            para.innerHTML = "So we\'ll march day and night";
+        } else if (v.currentTime < 77.7) {
+            para.innerHTML = "By the big cooling tower.";
+        } else if (v.currentTime < 80.) {
+            para.innerHTML = "They have the plant";
+        } else if (v.currentTime < 82.) {
+            para.innerHTML = "But we have the power.";
+        } else if (v.currentTime < 84.5) {
+            para.innerHTML = "So we\'ll march day and night";
+        } else if (v.currentTime < 86.) {
+            para.innerHTML = "By the big cooling tower.";
+        } else if (v.currentTime < 89.) {
+            para.innerHTML = "They have the plant";
+        } else if (v.currentTime < 91.) {
+            para.innerHTML = "But we have the power.";
+        } else {
+            para.innerHTML = "";
         }
     }, false);
 
