@@ -1,6 +1,6 @@
-#Lab 8: The Ride-Hailing Service, Part 1 on Week 3
+# Lab 8: The Ride-Hailing Service, Part 1 on Week 3
 
-##Camelia D. Brumar
+## Camelia D. Brumar
 
 ### Aspects of the work that have been correctly implemented and what have not
 
