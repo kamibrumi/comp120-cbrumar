@@ -1,6 +1,8 @@
-#Lab 8: The Ride-Hailing Service, Part 1 on Week 3
-Camelia D. Brumar
-## Aspects of the work that have been correctly implemented and what have not
+# Lab 8: The Ride-Hailing Service, Part 1 on Week 3
+
+## Camelia D. Brumar
+
+### Aspects of the work that have been correctly implemented and what have not
 
 - Loaded CSS first in the head section
 - Minified CSS
@@ -10,13 +12,15 @@ Camelia D. Brumar
 - I centered the map on South Station
 I believe I followed all the steps the professor provided, and I have implemented everything that was mentioned in the assignment statement.
 
-## Whom I have collaborated or discussed the lab
+### Whom I have collaborated or discussed the lab
 ~ No one.
 
-## Approximately how many hours I have spent completing the lab
+### Approximately how many hours I have spent completing the lab
 2 hours 30 minutes
 
-General metrics (for the whole site)
+### Metrics
+
+General metrics (for the whole site):
 
 | improvements | total     | transferred | finish | load   |
 |--------------|-----------|-------------|--------|--------|
@@ -43,4 +47,4 @@ For some reason, the time to load the css file took a bit longer with
 the optimizations, but the overall time experienced a great improvement, 
 from 798 ms (without the improvements) to 532 ms (with improvements).
 
-Note: the last commit contains the optimizations. In the previous commit there are the "pretty"/"readable"/commented files.
+Note: the last commit contains the optimizations. In the previous commits there are the "pretty"/"readable"/commented files.
