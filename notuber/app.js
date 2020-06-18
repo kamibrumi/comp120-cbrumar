@@ -7,11 +7,32 @@ var myPos;
     o.initMap = function() {
         var mapCenter = {lat: 42.352271, lng: -71.055242};
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
+            zoom: 7,
             center: mapCenter
         });
     }
 }(this.window = this.window || {});
+
+function computeDistance(lat1, lat2, lon1, lon2) {
+    // converting from degrees to radians
+    lon1 = lon1*Math.PI/180.;
+    lon2 = lon2*Math.PI/180.;
+    lat1 = lat1*Math.PI/180.;
+    lat2 = lat2*Math.PI/180.;
+
+    // Haversine formula
+    let dlon = lon2 - lon1
+    let dlat = lat2 - lat1
+    let a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+
+    let c = 2. * Math.asin(Math.sqrt(a));
+
+    // Radius of earth in miles.
+    let r = 3956.;
+
+    // round to 2 decimal places and return the result
+    return Math.round(c * r * 100) / 100;
+}
 
 function loadMarkers() {
     // Step 1: make an instance of XHR
@@ -33,8 +54,33 @@ function loadMarkers() {
             var carsJson = JSON.parse(request.responseText);
             console.log(carsJson);
 
-            let closestUsername = 'ulu';
-            let closestDistance = '16';
+            // place the markers for each car and using the same loop also compute the closest vehicle to my position.
+
+            // set the minimum distance to be associated to the first car initially
+            let carPos = {lat: carsJson[0].lat, lng: carsJson[0].lng};
+            var closestUsername = carsJson[0].username;
+            var closestDistance = computeDistance(myPos.lat, carPos.lat, myPos.lng, carPos.lng);
+            var closestCoordinates = {lat: carPos.lat, lng: carPos.lng};
+
+            for (count = 0 ; count < carsJson.length ; count++) {
+                let carPos = {lat: carsJson[count].lat, lng: carsJson[count].lng};
+                new google.maps.Marker({
+                    position: carPos,
+                    map: map,
+                    title: carsJson[count].username,
+                    icon: 'car.png'
+                });
+
+                // now compute the distance to my position
+
+                let distance = computeDistance(myPos.lat, carPos.lat, myPos.lng, carPos.lng);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestUsername = carsJson[count].username;
+                    closestCoordinates = {lat: carPos.lat, lng: carPos.lng};
+                }
+            }
+
             // create a marker to show where I am on the map
             var contentString = '<div id="content">'+
                 '<div id="siteNotice">'+
@@ -61,9 +107,23 @@ function loadMarkers() {
             });
 
 
-            // After loading the locations of the cars, we can compute the minimum distance between my location and
+            // render the polyline between my position and the position of the closest car
+
+            var polyline = [myPos, closestCoordinates];
+            var path = new google.maps.Polyline({
+                path: polyline,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+
+            path.setMap(map);
+
+
         }
     };
+
 
     // Step 4: Fire off request!!!
     console.log("Here I am 5");
