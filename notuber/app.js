@@ -56,26 +56,47 @@ function loadMarkers() {
             var closestDistance = computeDistance(myPos.lat, carPos.lat, myPos.lng, carPos.lng);
             var closestCoordinates = {lat: carPos.lat, lng: carPos.lng};
 
-            for (count = 0 ; count < carsJson.length ; count++) {
+            for (var count = 0 ; count < carsJson.length ; count++) {
                 let carPos = {lat: carsJson[count].lat, lng: carsJson[count].lng};
-                new google.maps.Marker({
-                    position: carPos,
-                    map: map,
-                    title: carsJson[count].username,
-                    icon: 'car.png'
-                });
 
-                // now compute the distance to my position and compare with the current minimum distance
+                //compute the distance to my position and compare with the current minimum distance
                 let distance = computeDistance(myPos.lat, carPos.lat, myPos.lng, carPos.lng);
                 if (distance < closestDistance) {
                     closestDistance = distance;
                     closestUsername = carsJson[count].username;
                     closestCoordinates = {lat: carPos.lat, lng: carPos.lng};
                 }
+
+                // place the marker of this car
+                let carContentString = '<div id="content">'+
+                    '<div id="siteNotice">'+
+                    '</div>'+
+                    '<h1 id="firstHeading" class="firstHeading">Car ' + carsJson[count].username + '</h1>'+
+                    '<div id="bodyContent">' +
+                    '<p><b>Distance to My Position:</b> ' + distance + '</p>' +
+                    '</div>'+
+                    '</div>';
+
+                let carInfowindow = new google.maps.InfoWindow({
+                    content: carContentString
+                });
+
+                let carMarker = new google.maps.Marker({
+                    position: carPos,
+                    map: map,
+                    title: carsJson[count].username,
+                    icon: 'car.png'
+                });
+
+                carMarker.addListener('click', function() {
+                    carInfowindow.open(map, carMarker);
+                });
+
+
             }
 
             // create a marker to show where I am on the map
-            var contentString = '<div id="content">'+
+            let contentString = '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
                 '<h1 id="firstHeading" class="firstHeading">My Position</h1>'+
@@ -86,11 +107,11 @@ function loadMarkers() {
                 '</div>'+
                 '</div>';
 
-            var infowindow = new google.maps.InfoWindow({
+            let infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
 
-            var myLocMarker = new google.maps.Marker({
+            let myLocMarker = new google.maps.Marker({
                 position: myPos,
                 map: map,
                 title: 'My location'
