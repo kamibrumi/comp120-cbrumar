@@ -1,5 +1,4 @@
 var map;
-var carsJson;
 var myPos;
 
 ! function(o) {
@@ -36,7 +35,6 @@ function computeDistance(lat1, lat2, lon1, lon2) {
 
 function loadMarkers() {
     // Step 1: make an instance of XHR
-    console.log("Here I am 1");
     var request = new XMLHttpRequest();
     // Step 2: Make request to the JSON source
     request.open("POST", "https://jordan-marsh.herokuapp.com/rides", true);
@@ -45,14 +43,10 @@ function loadMarkers() {
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     // Step 3: What to do when we get a response back
-    console.log("Here I am 2");
     request.onreadystatechange = function() {
         // Step 5: parse the JSON data from response
-        console.log("Here I am 3");
         if (request.readyState == 4 && request.status == 200) {
-            console.log("Here I am 4");
             var carsJson = JSON.parse(request.responseText);
-            console.log(carsJson);
 
             // place the markers for each car and using the same loop also compute the closest vehicle to my position.
 
@@ -71,8 +65,7 @@ function loadMarkers() {
                     icon: 'car.png'
                 });
 
-                // now compute the distance to my position
-
+                // now compute the distance to my position and compare with the current minimum distance
                 let distance = computeDistance(myPos.lat, carPos.lat, myPos.lng, carPos.lng);
                 if (distance < closestDistance) {
                     closestDistance = distance;
@@ -119,16 +112,12 @@ function loadMarkers() {
             });
 
             path.setMap(map);
-
-
         }
     };
 
 
     // Step 4: Fire off request!!!
-    console.log("Here I am 5");
     let geo = navigator.geolocation;
-    //console.log("geoloc: ", geo);
     geo.getCurrentPosition((position) => {
         myPos = {lat: position.coords.latitude, lng: position.coords.longitude};
         request.send("username=tNbjUAsF&lat=" + myPos.lat + "&lng=" + myPos.lng);
