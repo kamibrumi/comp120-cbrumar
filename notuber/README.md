@@ -2,6 +2,8 @@
 
 ## Camelia D. Brumar
 
+![screenshot](https://imgur.com/a/OimKNNL)
+
 ### Aspects of the work that have been implemented correctly
 
 - Determined and marked my location on the map
