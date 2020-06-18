@@ -1,18 +1,14 @@
 var map;
+var carsJson;
+var myPos;
 
 ! function(o) {
     "use strict";
     o.initMap = function() {
         var mapCenter = {lat: 42.352271, lng: -71.055242};
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
+            zoom: 12,
             center: mapCenter
-        });
-
-        var marker = new google.maps.Marker({
-            position: mapCenter,
-            map: map,
-            title: 'Hello World!'
         });
     }
 }(this.window = this.window || {});
@@ -36,7 +32,36 @@ function loadMarkers() {
             console.log("Here I am 4");
             var carsJson = JSON.parse(request.responseText);
             console.log(carsJson);
-            // use rest of the code on github with the loop
+
+            let closestUsername = 'ulu';
+            let closestDistance = '16';
+            // create a marker to show where I am on the map
+            var contentString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h1 id="firstHeading" class="firstHeading">My Position</h1>'+
+                '<div id="bodyContent">' +
+                '<p><b>Closest Car to My Position:</b></p>' +
+                '<p>Username: ' + closestUsername + ' </p>' +
+                '<p>Distance (in miles): ' + closestDistance + ' </p>' +
+                '</div>'+
+                '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var myLocMarker = new google.maps.Marker({
+                position: myPos,
+                map: map,
+                title: 'My location'
+            });
+            myLocMarker.addListener('click', function() {
+                infowindow.open(map, myLocMarker);
+            });
+
+
+            // After loading the locations of the cars, we can compute the minimum distance between my location and
         }
     };
 
@@ -45,6 +70,8 @@ function loadMarkers() {
     let geo = navigator.geolocation;
     //console.log("geoloc: ", geo);
     geo.getCurrentPosition((position) => {
-        request.send("username=tNbjUAsF&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude);
+        myPos = {lat: position.coords.latitude, lng: position.coords.longitude};
+        request.send("username=tNbjUAsF&lat=" + myPos.lat + "&lng=" + myPos.lng);
+
     });
 }
