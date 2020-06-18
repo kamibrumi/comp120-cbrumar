@@ -2,7 +2,7 @@
 
 ## Camelia D. Brumar
 
-![notuber](https://imgur.com/a/OimKNNL)
+![notuber](notuber.png)
 
 ### Aspects of the work that have been implemented correctly
 
