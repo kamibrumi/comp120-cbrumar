@@ -24,7 +24,7 @@ I believe I followed all the steps the professor provided, and I have implemente
 ### References for computing the distance between two markers
 https://www.geeksforgeeks.org/program-distance-two-points-earth/#:~:text=For%20this%20divide%20the%20values,is%20the%20radius%20of%20Earth.
 
-I used this for the Haversine formula (I took the code from Python3 section and wrote it in JavaScript).
+I used this for the Haversine formula (I took the code from the Python3 section and wrote it in JavaScript).
 
 
 # Lab 8: The Ride-Hailing Service, Part 1 on Week 3
