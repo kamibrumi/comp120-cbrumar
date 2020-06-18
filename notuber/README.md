@@ -31,7 +31,7 @@ I used this for the Haversine formula (I took the code from Python3 section and 
 
 ## Camelia D. Brumar
 
-### Aspects of the work that have been correctly implemented and what have not
+### Aspects of the work that have been implemented correctly
 
 - Loaded CSS first in the head section
 - Minified CSS
