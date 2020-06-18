@@ -1,6 +1,30 @@
+# Lab 10: The Ride-Hailing Service, Part 2 on Week 4
 
+## Camelia D. Brumar
+
+### Aspects of the work that have been implemented correctly
+
+- Determined and marked my location on the map
+- Made a successful request to the ride-hailing API, sent my username, latitude, and longitude
+- Marked all the vehicles returned by the ride-hailing API on the map using the provided icon image
+- Noted the closest vehicle from where I am (e.g., upon clicking on marker of where I am)
+- Rendered a polyline connecting my marker to the closest vehicle
+- There are no errors in the JavaScript console.
+- Called the ride-hailing API and the Google Maps JavaScript API only once.
+- BONUS: Accomplished at least one of the "Going Beyond" items, i.e. the one that says: "Upon clicking on a marker for a vehicle, show popup infowindow noting how far away the vehicle is, in miles, from you."
+
+I believe I followed all the steps the professor provided, and I have implemented everything that was mentioned in the assignment statement.
+
+### Whom I have collaborated or discussed the lab
+~ No one.
+
+### Approximately how many hours I have spent completing the lab
+7 hours
+
+### References for computing the distance between two markers
 https://www.geeksforgeeks.org/program-distance-two-points-earth/#:~:text=For%20this%20divide%20the%20values,is%20the%20radius%20of%20Earth.
-used this for the haversine fmla, (I took the code from Python3 and wrote it in JavaScript)
+
+I used this for the Haversine formula (I took the code from Python3 section and wrote it in JavaScript).
 
 
 # Lab 8: The Ride-Hailing Service, Part 1 on Week 3
@@ -15,6 +39,7 @@ used this for the haversine fmla, (I took the code from Python3 and wrote it in 
 - Minified JavaScript code. I made sure to make a copy of my "readable"/developer version JavaScript first, which can be found in the previous commit of this repository.
 - I also served my html page locally by running Python's simple HTTP server in the folder of my work
 - I centered the map on South Station
+
 I believe I followed all the steps the professor provided, and I have implemented everything that was mentioned in the assignment statement.
 
 ### Whom I have collaborated or discussed the lab
