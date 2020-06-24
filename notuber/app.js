@@ -37,7 +37,7 @@ function loadMarkers() {
     // Step 1: make an instance of XHR
     var request = new XMLHttpRequest();
     // Step 2: Make request to the JSON source
-    request.open("POST", "https://jordan-marsh.herokuapp.com/rides", true);
+    request.open("POST", "https://obscure-scrubland-32831.herokuapp.com/rides", true);
 
     // Step 2.5: Add a parameter to the HTTP request header in order to execute HTTP POST using the JavaScript XMLHttpRequest object
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
