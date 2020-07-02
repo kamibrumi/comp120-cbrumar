@@ -42,7 +42,9 @@
     <h3>Resolution</h3>
     <p>To solve this issue, the developer of the web server should check for the validity of the username under the /rides route, so that it doesn't include script tags or other non-valid characters.</p>
     <h3>Conclusion</h3>
-    <p></p>
+    <p>
+        In order to avoid stored XSS, assure that the elements stored in the database are valid entries and not script tags. Also, before constructing html content from contents from a database, assure that the contents are valid and again they are not unexpected script tags.
+    </p>
 </div>
 
 <div class="issue_div">
