@@ -15,6 +15,10 @@ h1 {
 }
 
 /* Applies to all elements with <... class="someclass"> specified. */
+body {
+    border-left: thick solid grey;
+    padding-left: 10px;
+}
 
 div {
     margin-left: 10px;
