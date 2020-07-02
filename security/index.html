@@ -57,11 +57,21 @@
     <h3>Description of issue</h3>
     <p>Under the /passenger.json, since usernameEntry can be provided by an attacker and its validity is not checked anywhere, it will be combined with an SQL query later under the same route. The usernameEntry, instead of containing a valid username, it might contain a part of a SQL command. This might cause disclosure of data of other users.</p>
     <h3>Proof of vulnerability</h3>
-    <p>An attacker could send a username in the request that is "usernameOR1=1--", which will result in the SQL query being<br><br>
-        "SELECT * FROM passengers WHERE username = '" + usernameEntry + "'";
+    <p>An attacker could send a username in the request that is "username'OR1=1--", which will result in the SQL query being<br><br>
+        SELECT * FROM passengers WHERE username = 'username' OR 1=1--;
+        <br><br>
+        since it will most probably happen that the username is not in the database, the second condition after the OR will be verified, which
+        is always true. Thus, the database will return all the rows in teh database, hence revealing all the data in the passengers table to the attacker.
     </p>
     <h3>Resolution</h3>
-    <p></p>
+    <p>Preventing injection requires keeping data separate from commands and queries.<br>
+        * The preferred option is to use a safe API, which avoids the use of the interpreter entirely or provides a parameterized interface, or migrate to use Object Relational Mapping Tools (ORMs).
+        Note: Even when parameterized, stored procedures can still introduce SQL injection if PL/SQL or T-SQL concatenates queries and data, or executes hostile data with EXECUTE IMMEDIATE or exec().<br>
+        * Use positive or “whitelist” server-side input validation. This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.<br>
+        * For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter.<br>
+        Note: SQL structure such as table names, column names, and so on cannot be escaped, and thus user-supplied structure names are dangerous. This is a common issue in report-writing software.<br>
+        * Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.<br>
+    Source: <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A1-Injection" target="_blank">OWASP</a></p>
     <h3>Conclusion</h3>
     <p></p>
 </div>
