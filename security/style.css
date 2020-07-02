@@ -1,10 +1,10 @@
 
 body {
     margin: 25px;
-    background-color: rgb(0,0,0);
-    font-family: arial, sans-serif;
+    background-color: rgb(256, 256, 256);
+    font-family: Courier, sans-serif;
     font-size: 14px;
-    color: white;
+    max-width: 95%;
 }
 
 /* Applies to all <h1>...</h1> elements. */
@@ -15,10 +15,29 @@ h1 {
 }
 
 /* Applies to all elements with <... class="someclass"> specified. */
-p { color: white; }
 
+div {
+    margin-left: 10px;
+}
 
 div.issue_div {
     margin-left: 40px;
+    border-left: solid #94C9A9 10px;
+    padding-left: 10px;
+}
+
+p {
+    margin-left: 10px;
+}
+ul {
+    list-style: none;
+}
+ul li::before {
+    content: "\2022";
+    color: #94C9A9;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
 }
 
