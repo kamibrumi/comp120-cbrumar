@@ -46,18 +46,20 @@
         In order to avoid stored XSS, assure that the elements stored in the database are valid entries and not script tags. Also, before constructing html content from contents from a database, assure that the contents are valid and again they are not unexpected script tags.
     </p>
 </div>
-
+<hr>
 <div class="issue_div">
     <h3>Issue</h3>
-    <p></p>
+    <p>SQL Injection</p>
     <h3>Location</h3>
-    <p></p>
+    <p>Under the /passenger.json and the /vehicle.json routes.</p>
     <h3>Severity of issue</h3>
-    <p></p>
+    <p>It can be a very severe issue since, according to <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A1-Injection" target="_blank">OWASP</a>, injection can result in data loss, corruption, or disclosure to unauthorized parties, loss of accountability, or denial of access. Injection can sometimes lead to complete host takeover. </p>
     <h3>Description of issue</h3>
-    <p></p>
+    <p>Under the /passenger.json, since usernameEntry can be provided by an attacker and its validity is not checked anywhere, it will be combined with an SQL query later under the same route. The usernameEntry, instead of containing a valid username, it might contain a part of a SQL command. This might cause disclosure of data of other users.</p>
     <h3>Proof of vulnerability</h3>
-    <p></p>
+    <p>An attacker could send a username in the request that is "usernameOR1=1--", which will result in the SQL query being<br><br>
+        "SELECT * FROM passengers WHERE username = '" + usernameEntry + "'";
+    </p>
     <h3>Resolution</h3>
     <p></p>
     <h3>Conclusion</h3>
