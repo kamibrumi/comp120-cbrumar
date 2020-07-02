@@ -30,6 +30,7 @@
     <h3>Proof of vulnerability</h3>
     In the terminal, executing
     <br><br>
+    <p>
     "curl -d 'username=&lt;script&gt;SOMETHING BAD&lt;script&gt;&lat=62&lng=70' https://jordan-marsh.herokuapp.com/"
     <br><br>
     will make the web server store the username, lat and lng provided by an attacker in the database. Later, if an user accesses the
@@ -73,9 +74,9 @@
         * Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.<br>
     Source: <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A1-Injection" target="_blank">OWASP</a></p>
     <h3>Conclusion</h3>
-    <p></p>
+    <p>In conclusion, SQL injection is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It can be prevented in many different ways, but mainly keeping data separate from commands and queries.</p>
 </div>
-
+<hr>
 <div class="issue_div">
     <h3>Issue</h3>
     <p></p>

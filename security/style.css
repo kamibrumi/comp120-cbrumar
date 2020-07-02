@@ -1,6 +1,22 @@
+
 body {
-    margin: 30px;
+    margin: 25px;
+    background-color: rgb(0,0,0);
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    color: white;
 }
+
+/* Applies to all <h1>...</h1> elements. */
+h1 {
+    font-size: 35px;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+/* Applies to all elements with <... class="someclass"> specified. */
+p { color: white; }
+
 
 div.issue_div {
     margin-left: 40px;
